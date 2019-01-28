@@ -106,6 +106,15 @@ export class FindCity extends Component{
                 <div>
                  {this.state.isShowTable && <TableCity/>}
                 </div>
+                <label>Exemplos:</label>
+                <br/>
+                <label>Por nome: Blumenau, BR</label>
+                <br/>
+                <label>Por cep: 98000, US (Não funciona para ceps Brasileiros)</label>
+                <br/>
+                <label>Por lat/lon: -26.9166, -49.0717</label>
+                <br/>
+                <label>Por id: 3450671</label>
               </div>
           </div>
           );
