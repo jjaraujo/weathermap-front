@@ -1,4 +1,4 @@
-##Para executar o projeto, siga os passos a seguir:
+## Para executar o projeto, siga os passos a seguir:
 
 - instalar o `node.js` (Projeto contruido com a versão `10.15.0`, recomendo essa versão)
 - após instalado, escolher uma pasta onde os projetos de react devem ficar e excecutar o comando `npm install  create-react-app`
