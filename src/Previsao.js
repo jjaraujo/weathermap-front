@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import Modal from 'react-awesome-modal';
-import styles  from './css/project.css'; 
+import Modal from 'react-awesome-modal'; 
 
 export class Previsao extends Component{
   constructor(){
@@ -70,8 +69,9 @@ export class Previsao extends Component{
         $.ajax({
         url:"http://localhost:8080/city/delete",
         dataType: 'json',
-        method:'get',
-        data: ({id:idCity}),
+        contentType:'application/json',
+        method:'post',
+        data: JSON.stringify({id:idCity}),
         success:function(response){    
           if(!response){  
             alert("Houve um erro, tente novamente!")
@@ -101,37 +101,42 @@ export class Previsao extends Component{
     render(){
 
       const TableWeather = () =>(
-        <div style={{overflowY:'scroll',width:'800px', height:'600px'}}>
-            <table className="pure-table">
+        <div>
+          <div>
+            <h2>{this.state.forecast.id}, {this.state.forecast.country}</h2>
+          </div>
+          <div style={{overflowY:'scroll',width:'800px', height:'600px'}}>
+              <table className="pure-table" >
 
-                  <thead>
-                   <tr>
-                      <th>Dia</th>
-                      <th>Hora</th>
-                      <th>Mínima</th>
-                      <th>Máxima</th>
-                      <th>Previsão do Clima</th>
-                      <th>Umidade</th>
-                    </tr>                          
-                  </thead>
-                  <tbody>    
-                  {
-                      this.state.forecast.listWeatherDay.map(function(weather){
-                          return(                   
-                              <tr key={this.state.forecast.id}>
-                                <td>{weather.date}</td>
-                                <td>{weather.hour}</td>
-                                <td>{weather.min}°</td>
-                                <td>{weather.max}°</td>
-                                <td>{weather.description}</td>
-                                <td>{weather.humidity}%</td>
-                              </tr>
-                          )
-                      },this)
-                    }           
-                  </tbody>
-                </table>
-            </div>  
+                    <thead>
+                     <tr> 
+                        <th>Dia</th>
+                        <th>Hora</th>
+                        <th>Mínima</th>
+                        <th>Máxima</th>
+                        <th>Previsão do Clima</th>
+                        <th>Umidade</th>
+                      </tr>                          
+                    </thead>
+                    <tbody>    
+                    {
+                        this.state.forecast.listWeatherDay.map(function(weather){
+                            return(                   
+                                <tr key={this.state.forecast.id}>
+                                  <td>{weather.date}</td>
+                                  <td>{weather.hour}</td>
+                                  <td>{weather.min}°</td>
+                                  <td>{weather.max}°</td>
+                                  <td>{weather.description}</td>
+                                  <td>{weather.humidity}%</td>
+                                </tr>
+                            )
+                        },this)
+                      }           
+                    </tbody>
+                  </table>
+              </div>  
+          </div>
       )
 
       const TableCities = () => (

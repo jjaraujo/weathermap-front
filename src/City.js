@@ -98,7 +98,7 @@ export class FindCity extends Component{
                 <div className="pure-form pure-form-aligned" >
                   <form className="pure-form pure-form-aligned" onSubmit={this.findCity} method='post'>
                     <div className="pure-control-group">
-                      <input id="text" type="text" name="text" label="Ex: Washington, US ou -19.88, 84.66 ou 12345" onChange={this.setText} /> 
+                      <input id="text" type="text" name="text" placeholder="Ex: Washington, US" onChange={this.setText} /> 
                       <button type="submit" className="pure-button pure-button-primary">Procurar</button>                 
                     </div> 
                   </form>  
